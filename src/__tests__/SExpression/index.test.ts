@@ -62,3 +62,19 @@ describe('Multiply function', () => {
   });
 });
 
+
+describe('Combination functions', () => {
+  test('(multiply 1 (add 2 3))', () => {
+    expect(calculator('(multiply 1 (add 2 3))')).toBe(5);
+  });
+
+  test('(add (multiply 2 2) (multiply 3 4))', () => {
+    expect(calculator('(add (multiply 2 2) (multiply 3 4))')).toBe(16);
+  });
+
+  test('(add 2 (add 3 multiple(3 add(3 3))))', () => {
+    expect(calculator('(add 2 (add 3 multiply (3 add(3 3))))')).toBe(32);
+  });
+});
+
+
