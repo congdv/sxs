@@ -3,6 +3,12 @@ import Operation from './operation';
 import Add from './add';
 import Multiply from './multiply';
 import Operator from './operator';
+import {
+  InvalidFormatError,
+  InvalidFunctionError,
+  NotNumberError,
+  NotSupportFunctionError,
+} from '../customError';
 
 function getOperation(func: string): Operation {
   switch (func) {
@@ -11,18 +17,18 @@ function getOperation(func: string): Operation {
     case Operator.MULTIPLY:
       return new Multiply();
     default:
-      throw new Error('Not Found Function');
+      throw new NotSupportFunctionError(func);
   }
 }
 
 function computeToken(expression: string[]) {
   if (expression.length < 2) {
-    throw new Error('Wrong format expression inside parentheses');
+    throw new InvalidFormatError(expression);
   }
   const func = expression[0];
   //Check valid function expression by checking type in Operator type
   if (!(func.toUpperCase() in Operator)) {
-    throw new Error('Not valid function expression');
+    throw new InvalidFunctionError(func);
   }
   const values = expression.splice(1).map((value) => parseInt(value));
   const operation = getOperation(func);
@@ -33,7 +39,10 @@ function computeToken(expression: string[]) {
 
 function calculator(input: string) {
   const startBracket = input.indexOf('(');
-  if (startBracket < 0) return parseInt(input);
+  if (startBracket < 0) {
+    if (!Number(input)) throw new NotNumberError(input);
+    return parseInt(input);
+  }
   let parenthesesStack = [];
   for (let i = 0; i < input.length; i++) {
     if (input[i] === '(') {
@@ -41,7 +50,7 @@ function calculator(input: string) {
       parenthesesStack.push(i);
     } else if (input[i] === ')') {
       if (parenthesesStack.length === 0) {
-        throw new Error('Wrong format input');
+        throw new InvalidFormatError(input);
       }
       // Get open parentheses and combine with close parentheses will create a token for compute
       const openParenthesesIndex = parenthesesStack.pop() as number;
