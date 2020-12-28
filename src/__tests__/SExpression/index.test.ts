@@ -73,7 +73,7 @@ describe('Combination functions', () => {
   });
 
   test('(add 2 (add 3 multiple(3 add(3 3))))', () => {
-    expect(calculator('(add 2 (add 3 multiply (3 add(3 3))))')).toBe(32);
+    expect(calculator('(add 2 (add 3 (multiply 3 (add 3 3))))')).toBe(23);
   });
 });
 
