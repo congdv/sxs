@@ -1,7 +1,7 @@
 {
-  "name": "s-expression-calculator",
+  "name": "sxs",
   "version": "1.0.0",
-  "description": "",
+  "description": "An CLI app for S-Expressing",
   "main": "./lib/index.js",
   "bin": {
     "sxs": "bin/sxs"

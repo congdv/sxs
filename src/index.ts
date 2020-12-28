@@ -3,6 +3,8 @@ import program from 'commander';
 import readline from 'readline';
 import SXS from './SExpression';
 
+const VERSION = '1.0.0';
+
 function calculate(value: string) {
   try {
     const result = SXS(value);
@@ -31,7 +33,7 @@ function interactMode() {
 
 export function main(argv: string[]): void {
   program
-    .version('0.0.1')
+    .version(VERSION)
     .usage(`[expression]\n  Examples:\n\t- sxs 233 \n\t- sxs "(add 2 3)' `)
     .description('An CLI app for S-Expressing')
     .parse(argv);
