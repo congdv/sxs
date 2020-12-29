@@ -7,6 +7,7 @@ A simple CLI to help calculate [S-expression](https://en.wikipedia.org/wiki/S-ex
 Install the sxs CLI as global CLI
 
 ```
+npm install -g sxs
 ```
 
 
