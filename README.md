@@ -21,6 +21,20 @@ chmod +x ./bin/sxs
 
 ### Usage
 
+```
+Usage: sxs [expression]
+  Examples:
+	- sxs 233 
+	- sxs "(add 2 3)' 
+
+An CLI app for S-Expressing
+
+Options:
+  -V, --version  output the version number
+  -h, --help     display help for command
+
+```
+
 ```sh
 sxs 123
 123

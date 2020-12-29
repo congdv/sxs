@@ -3,7 +3,7 @@ import program from 'commander';
 import readline from 'readline';
 import SXS from './SExpression';
 
-const VERSION = '1.0.1';
+const VERSION = '1.1.0';
 
 function calculate(value: string) {
   try {

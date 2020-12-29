@@ -1,6 +1,6 @@
 {
   "name": "sxs",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "An CLI app for S-Expressing",
   "main": "./lib/index.js",
   "bin": {
