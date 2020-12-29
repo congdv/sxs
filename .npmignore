@@ -1,0 +1,7 @@
+# Relevant files
+!lib/**
+
+# Unrelevant files
+src/**
+package-lock.json
+tsconfig.json
