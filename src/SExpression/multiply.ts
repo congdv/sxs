@@ -7,7 +7,10 @@ class Multiply extends Operation {
   }
   calculateMultipleNumbers(num: number[]): void {
     if (num.length < 2) {
-      throw new InvalidFormatError(undefined);
+      throw new InvalidFormatError(
+        num,
+        'The expression should contain at least two values',
+      );
     }
     this.currentNumber = num.reduce((prev, next) => prev * next, 1);
   }

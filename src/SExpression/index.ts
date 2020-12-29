@@ -9,6 +9,7 @@ import {
   NotNumberError,
   NotSupportFunctionError,
 } from '../customError';
+import { isNumeric } from '../utils';
 
 function getOperation(func: string): Operation {
   switch (func) {
@@ -31,8 +32,8 @@ function computeToken(expression: string[]) {
     throw new InvalidFunctionError(func);
   }
   const values = expression.splice(1).map((value) => {
-    if (!Number(value)) throw new NotNumberError(value);
-    return parseInt(value);
+    if (!isNumeric(value)) throw new NotNumberError(value);
+    return Number(value);
   });
   const operation = getOperation(func);
   operation.calculateMultipleNumbers(values);
@@ -43,17 +44,17 @@ function computeToken(expression: string[]) {
 function calculator(input: string) {
   const startBracket = input.indexOf('(');
   if (startBracket < 0) {
-    if (!Number(input)) throw new NotNumberError(input);
-    return parseInt(input);
+    if (!isNumeric(input)) throw new NotNumberError(input);
+    return Number(input);
   }
   let parenthesesStack = [];
   for (let i = 0; i < input.length; i++) {
     if (input[i] === '(') {
-      // Store index of open parentheses
+      // Store index of open parenthesis
       parenthesesStack.push(i);
     } else if (input[i] === ')') {
       if (parenthesesStack.length === 0) {
-        throw new InvalidFormatError(input);
+        throw new InvalidFormatError(input, 'The parenthesis is not balanced');
       }
       // Get open parentheses and combine with close parentheses will create a token for compute
       const openParenthesesIndex = parenthesesStack.pop() as number;
@@ -72,7 +73,11 @@ function calculator(input: string) {
       i = openParenthesesIndex + lengthOfResult - 1;
     }
   }
-  return parseInt(input);
+  //If still have begin parenthesis
+  if (parenthesesStack.length > 0) {
+    throw new InvalidFormatError(input, 'The parenthesis is not balanced');
+  }
+  return Number(input);
 }
 
 export default calculator;
