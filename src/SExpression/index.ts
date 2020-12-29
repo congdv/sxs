@@ -30,7 +30,10 @@ function computeToken(expression: string[]) {
   if (!(func.toUpperCase() in Operator)) {
     throw new InvalidFunctionError(func);
   }
-  const values = expression.splice(1).map((value) => parseInt(value));
+  const values = expression.splice(1).map((value) => {
+    if (!Number(value)) throw new NotNumberError(value);
+    return parseInt(value);
+  });
   const operation = getOperation(func);
   operation.calculateMultipleNumbers(values);
   const result = operation.getResult();

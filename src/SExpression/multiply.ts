@@ -1,3 +1,4 @@
+import { InvalidFormatError } from '../customError';
 import Operation from './operation';
 
 class Multiply extends Operation {
@@ -6,7 +7,7 @@ class Multiply extends Operation {
   }
   calculateMultipleNumbers(num: number[]): void {
     if (num.length < 2) {
-      throw new Error('You need at least two arguments for calculating');
+      throw new InvalidFormatError(undefined);
     }
     this.currentNumber = num.reduce((prev, next) => prev * next, 1);
   }

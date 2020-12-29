@@ -14,8 +14,12 @@ export class NotNumberError extends BaseError {
 }
 
 export class InvalidFormatError extends BaseError {
-  constructor(data: string | number | string[]) {
-    super(`${data} is an invalid format`);
+  constructor(data: string | number | string[] | undefined) {
+    super(
+      `${
+        data ? `${data} is an invalid format` : 'The expression is an invalid format'
+      }`,
+    );
   }
 }
 
