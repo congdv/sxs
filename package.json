@@ -9,9 +9,10 @@
   "scripts": {
     "start": "npm run build",
     "build": "npm run clean:some && tsc -p .",
-    "test": "jest",
+    "test": "npm run clean:test && jest --verbose --runInBand",
     "clean:some": "rm -rf ./lib",
     "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib",
+    "clean:test": "jest --clearCache",
     "publish-package": "npm run build && npm publish"
   },
   "keywords": [],
