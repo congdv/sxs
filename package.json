@@ -11,11 +11,13 @@
     "build": "npm run clean:some && tsc -p .",
     "test": "jest",
     "clean:some": "rm -rf ./lib",
-    "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib"
+    "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib",
+    "publish-package": "npm run build && npm publish"
   },
   "keywords": [],
   "author": "Cong Dao - congdaovan94@gmail.com",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": "https://github.com/congdv/sxs",
   "devDependencies": {
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.16",
