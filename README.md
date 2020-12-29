@@ -10,15 +10,6 @@ Install the sxs CLI as global CLI
 npm install -g sxs
 ```
 
-
-### Development
-
-```sh
-npm run build
-chmod +x ./bin/sxs
-./bin/sxs
-```
-
 ### Usage
 
 ```
@@ -52,4 +43,14 @@ sxs
 >>> (add 2 5)
 7
 >> exit
+```
+### Development
+
+```sh
+git clone https://github.com/congdv/sxs
+cd sxs
+npm
+npm run build
+chmod +x ./bin/sxs
+./bin/sxs
 ```
