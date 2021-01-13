@@ -1,4 +1,3 @@
-import { exception } from 'console';
 import Operation from './operation';
 import Add from './add';
 import Multiply from './multiply';
@@ -47,7 +46,7 @@ function calculator(input: string) {
     if (!isNumeric(input)) throw new NotNumberError(input);
     return Number(input);
   }
-  let parenthesesStack = [];
+  let parenthesesStack: number[] = [];
   for (let i = 0; i < input.length; i++) {
     if (input[i] === '(') {
       // Store index of open parenthesis
@@ -57,7 +56,7 @@ function calculator(input: string) {
         throw new InvalidFormatError(input, 'The parenthesis is not balanced');
       }
       // Get open parentheses and combine with close parentheses will create a token for compute
-      const openParenthesesIndex = parenthesesStack.pop() as number;
+      const openParenthesesIndex: number = parenthesesStack.pop() as number;
       // Get token from open parentheses to close parentheses
       const token = input.substring(openParenthesesIndex + 1, i).split(' ');
       // Compute the extracted token
